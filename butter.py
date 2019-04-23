@@ -1,0 +1,20 @@
+import numpy as np
+import matplotlib.pyplot as mp
+wp=float(input("enter the pass band frequency:"))
+ws=float(input("enter the stopband frequency:"))
+p=float(input("enter a pass band gain:"))
+s=float(input("enter the stopband gain:"))
+x=float((1/s**2)-1)
+y=float((1/p**2)-1)
+print(x)
+print(y)
+z=ws/wp
+a=np.log(x/y)
+b=np.log(z)
+N=1/2*(a/b)
+print('order of N')
+wc=wp/(y**(1/(2*N)))
+w=np.arange(0,100,10)
+h=(1/np.sqrt(1+((w/wc)**(2*N))))
+mp.plot(w,h)
+mp.show()
